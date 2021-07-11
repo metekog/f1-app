@@ -1,0 +1,73 @@
+@import "../../global.scss";
+
+.topbar {
+  width: 100%;
+  height: 90px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: $main-color;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  transition: all 1s ease;
+
+  .wrapper {
+    padding: 10px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .logo {
+        height: 50px;
+        width: 50px;
+        text-decoration: none;
+        color: inherit;
+        img {
+          width: 110px;
+        }
+      }
+    }
+    .right {
+      .hamburger {
+        width: 32px;
+        height: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        margin-top: 20px;
+
+        span {
+          width: 100%;
+          height: 3px;
+          background-color: $main-color;
+          transform-origin: left;
+          transition: all 1s ease;
+        }
+      }
+    }
+  }
+  &.active {
+    background-color: $main-color;
+    color: white;
+
+    .hamburger {
+      span {
+        &:first-child {
+          background-color: white;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:last-child {
+          background-color: white;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}

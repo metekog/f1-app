@@ -8,17 +8,12 @@ import {
   TableRow,
   Paper,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { fetchDrivers } from "../../api/Api";
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+import { fetchDrivers, fetchSeasons } from "../../Services/Serives";
+import useStyles from "./styles";
 
 const Drivers = () => {
   const [drivers, setDrivers] = useState([]);
+  const [seasons, setSeasons] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
@@ -26,9 +21,29 @@ const Drivers = () => {
       const data = await fetchDrivers();
       setDrivers(data);
     };
+
     fetchDriversData();
   }, []);
-  console.log(drivers);
+
+  /*  useEffect(() => {
+    const fetchYearsData = async () => {
+      const data = await fetchYears();
+      setYears(data);
+    };
+
+    fetchYearsData();
+  }, []); */
+
+  useEffect(() => {
+    const fetchSeasonsData = async () => {
+      const data = await fetchSeasons();
+      setSeasons(data);
+    };
+
+    fetchSeasonsData();
+  }, []);
+
+  console.log(seasons.season);
 
   return (
     <TableContainer component={Paper}>
@@ -46,12 +61,11 @@ const Drivers = () => {
           {drivers.map((driver) => (
             <TableRow key={driver.id}>
               <TableCell component="th" scope="row">
-                {driver.givenName}  {driver.familyName}
+                {driver.givenName} {driver.familyName}
               </TableCell>
               <TableCell align="right"> {driver.permanentNumber} </TableCell>
               <TableCell align="right">{driver.nationality}</TableCell>
               <TableCell align="right">{driver.dateOfBirth}</TableCell>
-              <TableCell align="right">{driver.url}</TableCell>
             </TableRow>
           ))}
         </TableBody>

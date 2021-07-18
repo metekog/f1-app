@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, FormControl, Select, MenuItem } from "@material-ui/core";
-import { fetchSeasons } from "../../Services/Serives";
+import { fetchSeasons } from "../../Services/Services";
 import DriverTable from "./DriverTable";
 
 const Drivers = () => {
@@ -15,8 +15,7 @@ const Drivers = () => {
 
     fetchSeasonsData();
   }, []);
-  console.log(years);
-  console.log(seasons);
+ 
 
   return (
     <Container maxWidth="lg">

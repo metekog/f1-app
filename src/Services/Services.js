@@ -43,9 +43,9 @@ export const calendar = async () => {
   return data.MRData.RaceTable.Races;
 };
 
-export const constructor = async () => {
+export const getConstructor = async () => {
   const { data } = await axios.get(
     `${baseEndPoint}/current/constructorStandings.json`
   );
-  return data.MRData.StandingsTable.StandingsLists.ConstructorStandings;
+  return data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
 };

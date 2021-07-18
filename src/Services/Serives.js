@@ -2,22 +2,23 @@ import axios from "axios";
 
 const baseEndPoint = "http://ergast.com/api/f1";
 
-export const fetchDrivers = async (year = 2021) => {
-  const { data } = await axios.get(`${baseEndPoint}/${year}/drivers.json`);
+export const fetchDrivers = async (years) => {
+  const { data } = await axios.get(`${baseEndPoint}/${years}/drivers.json`);
   return data.MRData.DriverTable.Drivers;
 };
 
-/* export const fetchYears = async () => {
+export const fetchYears = async () => {
   const { data } = await axios.get(
     `${baseEndPoint}/seasons.json?limit=30&offset=60`
   );
   return data.MRData.SeasonTable.Seasons;
 };
- */
 
-export const fetchSeasons = async (year = 2021) => {
-  const { data } = await axios.get(`${baseEndPoint}/${year}/drivers.json`);
-  return data.MRData.DriverTable;
+export const fetchSeasons = async (year) => {
+  const { data } = await axios.get(
+    `${baseEndPoint}/seasons.json?limit=30&offset=60`
+  );
+  return data.MRData.SeasonTable.Seasons;
 };
 
 export const nextRace = async () => {
@@ -40,4 +41,11 @@ export const driverStandings = async () => {
 export const calendar = async () => {
   const { data } = await axios.get(`${baseEndPoint}/2021.json`);
   return data.MRData.RaceTable.Races;
+};
+
+export const constructor = async () => {
+  const { data } = await axios.get(
+    `${baseEndPoint}/current/constructorStandings.json`
+  );
+  return data.MRData.StandingsTable.StandingsLists.ConstructorStandings;
 };

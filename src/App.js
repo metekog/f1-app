@@ -1,5 +1,5 @@
 import "./app.scss";
-import Drivers from "./components/Drivers/Drivers";
+import Drivers from "./components/Drivers/Seasons";
 import Navbar from "./components/Navbar/Navbar";
 
 const App = () => {

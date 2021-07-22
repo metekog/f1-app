@@ -14,7 +14,7 @@ export const fetchYears = async () => {
   return data.MRData.SeasonTable.Seasons;
 };
 
-export const fetchSeasons = async (year) => {
+export const fetchSeasons = async () => {
   const { data } = await axios.get(
     `${baseEndPoint}/seasons.json?limit=30&offset=60`
   );
@@ -31,11 +31,11 @@ export const lastRace = async () => {
   return data.data.MRData.RaceTable.Races;
 };
 
-export const driverStandings = async () => {
+export const driverStanding = async (year) => {
   const { data } = await axios.get(
-    `${baseEndPoint}/current/driverStandings.json`
+    `${baseEndPoint}/${year}/driverStandings.json`
   );
-  return data.MRData.StandingsTable.StandingsLists.DriverStandings;
+  return data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
 };
 
 export const calendar = async () => {
@@ -43,9 +43,9 @@ export const calendar = async () => {
   return data.MRData.RaceTable.Races;
 };
 
-export const getConstructor = async () => {
+export const constructorStanding = async (year) => {
   const { data } = await axios.get(
-    `${baseEndPoint}/current/constructorStandings.json`
+    `${baseEndPoint}/${year}/constructorStandings.json`
   );
   return data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
 };

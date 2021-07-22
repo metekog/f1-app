@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useStyles from "./styles";
 import {
   Table,
   TableBody,
@@ -10,28 +9,51 @@ import {
   Paper,
   Container,
   Typography,
+  FormControl,
+  MenuItem,
+  Select,
 } from "@material-ui/core";
-import { constructorStanding } from "../../Services/Services";
+import { driverStanding, fetchSeasons } from "../../Services/Services";
+import useStyles from "./styles";
 
-export default function ConstructorStandings({ years }) {
+const DriverStandings = () => {
   const classes = useStyles();
 
-  const [constructors, setConstructors] = useState([]);
+  const [drivers, setDrivers] = useState([]);
+  const [seasons, setSeasons] = useState([]);
+  const [years, setYears] = useState("2021");
 
   useEffect(() => {
-    const fetchConstructorsData = async () => {
-      const data = await constructorStanding(years);
-      setConstructors(data);
+    const fetchDriversData = async () => {
+      const data = await driverStanding(years);
+      setDrivers(data);
     };
-    fetchConstructorsData();
+    fetchDriversData();
   }, [years]);
+
+  useEffect(() => {
+    const fetchSeasonsData = async () => {
+      const data = await fetchSeasons();
+      setSeasons(data);
+    };
+
+    fetchSeasonsData();
+  }, []);
 
   return (
     <Container maxWidth="lg">
       <Typography align="center" variant="h2">
-        Constructor Standings
+        Driver Standings
       </Typography>
-
+      <FormControl>
+        <Select value={years} onChange={(e) => setYears(e.target.value)}>
+          {seasons.map((s) => (
+            <MenuItem key={s.season} value={s.season}>
+              {s.season}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead className={classes.tableHead}>
@@ -45,27 +67,27 @@ export default function ConstructorStandings({ years }) {
             </TableRow>
           </TableHead>
 
-          {constructors.map((constructor) => (
-            <TableBody key={constructor.Constructor.constructorId}>
+          {drivers.map((driver) => (
+            <TableBody key={driver.Driver.driverId}>
               <TableRow>
                 <TableCell component="th" scope="row" align="center">
-                  {constructor.position}
+                  {driver.position}
                 </TableCell>
                 <TableCell align="center">
                   <img
                     style={{ width: "200px" }}
-                    src={`images/cars/${constructor.Constructor.constructorId}.png`}
+                    src={`images/cars/${driver.Constructors[0].constructorId}.png`}
                     alt=""
                   />
                 </TableCell>
                 <TableCell align="center">
-                  {constructor.Constructor.name}{" "}
+                  {driver.Driver.givenName} {driver.Driver.familyName}
                 </TableCell>
-                <TableCell align="center">{constructor.points}</TableCell>
-                <TableCell align="center">{constructor.wins}</TableCell>
+                <TableCell align="center">{driver.points}</TableCell>
+                <TableCell align="center">{driver.wins}</TableCell>
                 <TableCell align="center">
                   <img
-                    src={`images/flags/${constructor.Constructor.nationality}.png`}
+                    src={`images/flags/${driver.Driver.nationality}.png`}
                     alt=""
                   />
                 </TableCell>
@@ -76,4 +98,6 @@ export default function ConstructorStandings({ years }) {
       </TableContainer>
     </Container>
   );
-}
+};
+
+export default DriverStandings;

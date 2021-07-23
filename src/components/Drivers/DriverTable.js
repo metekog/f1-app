@@ -25,10 +25,6 @@ export default function DriverTable({ years }) {
     fetchDriversData();
   }, [years]);
 
-  /* console.log(years);
-
-  console.log(allImages); */
-
   return (
     <div>
       <TableContainer component={Paper}>

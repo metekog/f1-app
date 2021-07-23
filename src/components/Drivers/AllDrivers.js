@@ -8,10 +8,13 @@ import {
 } from "@material-ui/core";
 import { fetchSeasons } from "../../Services/Services";
 import DriverTable from "./DriverTable";
+import useStyles from "./styles";
 
 const AllDrivers = () => {
   const [seasons, setSeasons] = useState([]);
   const [years, setYears] = useState("2021");
+
+  const classes = useStyles();
 
   useEffect(() => {
     const fetchSeasonsData = async () => {
@@ -24,11 +27,15 @@ const AllDrivers = () => {
 
   return (
     <Container maxWidth="lg">
-      <Typography align="center" variant="h2">
-        Drivers
+      <Typography className={classes.head} align="center" variant="h4">
+        All Formula One Drivers
       </Typography>
-      <FormControl>
-        <Select value={years} onChange={(e) => setYears(e.target.value)}>
+      <FormControl className={classes.opt}>
+        <Select
+          className={classes.sel}
+          value={years}
+          onChange={(e) => setYears(e.target.value)}
+        >
           {seasons.map((s) => (
             <MenuItem key={s.season} value={s.season}>
               {s.season}

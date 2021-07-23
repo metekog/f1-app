@@ -42,7 +42,7 @@ const DriverStandings = () => {
 
   return (
     <Container maxWidth="lg">
-      <Typography align="center" variant="h2">
+      <Typography align="center" variant="h4" style={{ color: "#006F62" }}>
         Driver Standings
       </Typography>
       <FormControl>
@@ -63,11 +63,11 @@ const DriverStandings = () => {
               <TableCell align="center">Team</TableCell>
               <TableCell align="center">Points</TableCell>
               <TableCell align="center">Wins</TableCell>
-              <TableCell align="center">Team Nationality</TableCell>
+              <TableCell align="center">Driver Nationality</TableCell>
             </TableRow>
           </TableHead>
 
-          {drivers.map((driver) => (
+          {drivers.slice(0, 10).map((driver) => (
             <TableBody key={driver.Driver.driverId}>
               <TableRow>
                 <TableCell component="th" scope="row" align="center">

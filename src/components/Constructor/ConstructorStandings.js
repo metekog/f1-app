@@ -1,79 +1,46 @@
-import React, { useEffect, useState } from "react";
-import useStyles from "./styles";
+import React, { useState, useEffect } from "react";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
   Container,
+  FormControl,
+  Select,
+  MenuItem,
   Typography,
 } from "@material-ui/core";
-import { constructorStanding } from "../../Services/Services";
+import { fetchSeasons } from "../../Services/Services";
+import ConstructorTable from "./ConstructorTable";
 
-export default function ConstructorStandings({ years }) {
-  const classes = useStyles();
-
-  const [constructors, setConstructors] = useState([]);
+const ConstructorStandings = () => {
+  const [seasons, setSeasons] = useState([]);
+  const [years, setYears] = useState("2021");
 
   useEffect(() => {
-    const fetchConstructorsData = async () => {
-      const data = await constructorStanding(years);
-      setConstructors(data);
+    const fetchSeasonsData = async () => {
+      const data = await fetchSeasons();
+      setSeasons(data);
     };
-    fetchConstructorsData();
-  }, [years]);
+
+    fetchSeasonsData();
+  }, []);
+
+  console.log(seasons);
 
   return (
-    <Container maxWidth="lg">
-      <Typography align="center" variant="h2">
+    <Container>
+      <Typography style={{ color: "#006F62" }} variant="h4">
         Constructor Standings
       </Typography>
-
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead className={classes.tableHead}>
-            <TableRow>
-              <TableCell align="center">Position</TableCell>
-              <TableCell align="center"></TableCell>
-              <TableCell align="center">Team</TableCell>
-              <TableCell align="center">Points</TableCell>
-              <TableCell align="center">Wins</TableCell>
-              <TableCell align="center">Team Nationality</TableCell>
-            </TableRow>
-          </TableHead>
-
-          {constructors.map((constructor) => (
-            <TableBody key={constructor.Constructor.constructorId}>
-              <TableRow>
-                <TableCell component="th" scope="row" align="center">
-                  {constructor.position}
-                </TableCell>
-                <TableCell align="center">
-                  <img
-                    style={{ width: "200px" }}
-                    src={`images/cars/${constructor.Constructor.constructorId}.png`}
-                    alt=""
-                  />
-                </TableCell>
-                <TableCell align="center">
-                  {constructor.Constructor.name}{" "}
-                </TableCell>
-                <TableCell align="center">{constructor.points}</TableCell>
-                <TableCell align="center">{constructor.wins}</TableCell>
-                <TableCell align="center">
-                  <img
-                    src={`images/flags/${constructor.Constructor.nationality}.png`}
-                    alt=""
-                  />
-                </TableCell>
-              </TableRow>
-            </TableBody>
+      <FormControl>
+        <Select value={years} onChange={(e) => setYears(e.target.value)}>
+          {seasons.map((season) => (
+            <MenuItem key={season.season} value={season.season}>
+              {season.season}
+            </MenuItem>
           ))}
-        </Table>
-      </TableContainer>
+        </Select>
+      </FormControl>
+      <ConstructorStandings years={years} />
     </Container>
   );
-}
+};
+
+export default ConstructorStandings;

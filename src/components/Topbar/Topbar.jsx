@@ -1,6 +1,5 @@
+import { Link } from "react-router-dom";
 import "./topbar.scss";
-import logo from "../../images/logo-green.png";
-import logoWhite from "../../images/logo-2.png";
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
   return (
@@ -9,9 +8,13 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
         <div className="left">
           <div className="logo">
             {menuOpen ? (
-              <img src={logoWhite} alt=""></img>
+              <Link to="/">
+                <img src=" /images/logo/logo-red.png" alt=""></img>
+              </Link>
             ) : (
-              <img src={logo} alt=""></img>
+              <Link to="/">
+                <img src="/images/logo/logo.png" alt=""></img>
+              </Link>
             )}
           </div>
         </div>

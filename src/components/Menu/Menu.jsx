@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./menu.scss";
 
 export default function Menu({ menuOpen, setMenuOpen }) {
@@ -5,10 +6,16 @@ export default function Menu({ menuOpen, setMenuOpen }) {
     <div className={"menu " + (menuOpen && "active")}>
       <ul>
         <li onClick={() => setMenuOpen(false)}>
-          <a>Drivers</a>
+          <Link to="drivers-standings">Drivers Standings</Link>
         </li>
         <li onClick={() => setMenuOpen(false)}>
-          <a>Standings</a>
+          <Link to="constructors-standings">Constructors Standings</Link>
+        </li>
+        <li onClick={() => setMenuOpen(false)}>
+          <Link to="constructors-standings">Constructors Standings</Link>
+        </li>
+        <li onClick={() => setMenuOpen(false)}>
+          <Link to="constructors-standings">Constructors Standings</Link>
         </li>
       </ul>
     </div>

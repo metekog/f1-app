@@ -21,26 +21,28 @@ export default makeStyles(() => ({
   },
   table: {},
   button: {
-    border: "2px solid #F596C8",
+    border: "2px solid #DB0A40",
     borderRadius: "40px",
     color: "white",
-    background: "#F596C8",
+    background: "#DB0A40",
     width: "50%",
     marginTop: "15px",
     "&:hover": {
-      color: "#006F62",
+      border: "2px solid #004C6C",
+      color: "#DB0A40",
       background: "white",
     },
-   
   },
   tableHead: {
     background: "rgba(220,220,220, 0.5)",
   },
   header: {
-    background: " #006F62",
+    background: " #004C6C",
     color: "white",
     padding: "10px",
     borderRadius: "20px",
     marginBottom: "10px",
+    fontFamily: "'Orbitron', sans-serif",
+
   },
 }));

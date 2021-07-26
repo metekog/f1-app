@@ -41,9 +41,16 @@ const DriverStandings = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg">
-      <Typography align="center" variant="h4" style={{ color: "#006F62" }}>
-        Driver Standings
+    <Container>
+      <Typography
+        align="center"
+        className={classes.header}
+        variant="h5"
+        gutterBottom
+      >
+        <b className={classes.raceName}>
+          <span style={{color:"#DB0A40"}}>{years} </span>- Drivers' Standings{" "}
+        </b>
       </Typography>
       <FormControl>
         <Select value={years} onChange={(e) => setYears(e.target.value)}>
@@ -59,15 +66,15 @@ const DriverStandings = () => {
           <TableHead className={classes.tableHead}>
             <TableRow>
               <TableCell align="center">Position</TableCell>
-              <TableCell align="center"></TableCell>
               <TableCell align="center">Team</TableCell>
+              <TableCell align="center">Name</TableCell>
               <TableCell align="center">Points</TableCell>
               <TableCell align="center">Wins</TableCell>
               <TableCell align="center">Driver Nationality</TableCell>
             </TableRow>
           </TableHead>
 
-          {drivers.slice(0, 10).map((driver) => (
+          {drivers.map((driver) => (
             <TableBody key={driver.Driver.driverId}>
               <TableRow>
                 <TableCell component="th" scope="row" align="center">

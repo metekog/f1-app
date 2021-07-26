@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Card,
-  CardContent,
   Typography,
   Container,
   Table,
@@ -10,7 +8,6 @@ import {
   Button,
   TableHead,
   TableRow,
-  Paper,
   Hidden,
 } from "@material-ui/core";
 import useStyles from "./styles";
@@ -35,7 +32,7 @@ function LastRace() {
   return (
     <Container className={classes.root}>
       <Typography className={classes.header} variant="h5" gutterBottom>
-        Last Race: {race.raceName}
+        Last Race: <b className={classes.raceName}>{race.raceName}</b>
       </Typography>
       <Table className={classes.table} aria-label="simple table">
         <TableHead className={classes.tableHead}>

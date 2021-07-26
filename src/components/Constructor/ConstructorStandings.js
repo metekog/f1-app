@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { fetchSeasons } from "../../Services/Services";
+import useStyles from "./styles";
 import ConstructorTable from "./ConstructorTable";
 
 const ConstructorStandings = () => {
@@ -22,12 +23,12 @@ const ConstructorStandings = () => {
     fetchSeasonsData();
   }, []);
 
-  console.log(seasons);
+  const classes = useStyles();
 
   return (
     <Container>
-      <Typography style={{ color: "#006F62" }} variant="h4">
-        Constructor Standings
+      <Typography align="center" className={classes.header} variant="h5" gutterBottom>
+        <b className={classes.raceName}> {years} - Constructors' Standings</b>
       </Typography>
       <FormControl>
         <Select value={years} onChange={(e) => setYears(e.target.value)}>

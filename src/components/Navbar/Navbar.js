@@ -9,6 +9,7 @@ export default function Navbar() {
           <img src={"images/logo/logo-2.png"} alt="" />
         </div>
       </Link>
+      
     </div>
   );
 }

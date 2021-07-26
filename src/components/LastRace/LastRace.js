@@ -28,14 +28,20 @@ function LastRace() {
 
   const classes = useStyles();
 
-  console.log(race && race.Results && race.Results[0].Driver.givenName);
-
   return (
     <div>
       {race && race.Results ? (
         <Container className={classes.root}>
           <Typography className={classes.header} variant="h5" gutterBottom>
-            Last Race: <b className={classes.raceName}>{race.raceName}</b>
+            Last Race:{" "}
+            <b className={classes.raceName}>
+              {race.raceName}
+              <span style={{ fontSize: "12px" }}>{race.season}</span>
+            </b>
+            <p>{race.Circuit.circuitName}</p>
+          </Typography>
+          <Typography className={classes.sub} variant="h5" gutterBottom>
+            {race.Circuit.circuitName}
           </Typography>
           <Table className={classes.table} aria-label="simple table">
             <TableHead className={classes.tableHead}>

@@ -2,8 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import DriverStandings from "../Drivers/DriverStandings";
-import ConstructorStandings from "../Constructor/ConstructorStandings";
 import LastRace from "../LastRace/LastRace";
 import DriverFive from "../Drivers/DriverFive";
 import { Container } from "@material-ui/core";

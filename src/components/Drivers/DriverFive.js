@@ -6,7 +6,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   Typography,
   Button,
   Hidden,
@@ -26,7 +25,6 @@ export default function DriverFive() {
     };
     fetchDriverData();
   }, []);
-  console.log(drivers);
 
   const classes = useStyles();
 

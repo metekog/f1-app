@@ -23,7 +23,4 @@ export default makeStyles(() => ({
     borderRadius: "20px",
     marginBottom: "10px",
   },
-  body: {
-    minHeight: "400px",
-  },
 }));

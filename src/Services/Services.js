@@ -2,8 +2,8 @@ import axios from "axios";
 
 const baseEndPoint = "http://ergast.com/api/f1";
 
-export const fetchDrivers = async (years) => {
-  const { data } = await axios.get(`${baseEndPoint}/${years}/drivers.json`);
+export const fetchDrivers = async (year = "2021") => {
+  const { data } = await axios.get(`${baseEndPoint}/${year}/drivers.json`);
   return data.MRData.DriverTable.Drivers;
 };
 
@@ -28,10 +28,10 @@ export const nextRace = async () => {
 
 export const lastRace = async () => {
   const { data } = await axios.get(`${baseEndPoint}/current/last/results.json`);
-  return data.data.MRData.RaceTable.Races;
+  return data.MRData.RaceTable.Races[0];
 };
 
-export const driverStanding = async (year) => {
+export const driverStanding = async (year = "2021") => {
   const { data } = await axios.get(
     `${baseEndPoint}/${year}/driverStandings.json`
   );
@@ -43,7 +43,7 @@ export const calendar = async () => {
   return data.MRData.RaceTable.Races;
 };
 
-export const constructorStanding = async (year) => {
+export const constructorStanding = async (year = "2021") => {
   const { data } = await axios.get(
     `${baseEndPoint}/${year}/constructorStandings.json`
   );

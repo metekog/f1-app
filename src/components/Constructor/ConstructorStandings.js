@@ -38,7 +38,7 @@ const ConstructorStandings = () => {
           ))}
         </Select>
       </FormControl>
-      <ConstructorStandings years={years} />
+      <ConstructorTable years={years} />
     </Container>
   );
 };

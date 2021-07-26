@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   root: {
     minWidth: 275,
     textAlign: "center",
@@ -43,6 +43,14 @@ export default makeStyles(() => ({
       border: "2px solid #004C6C",
       color: "#DB0A40",
       background: "white",
+    },
+  },
+  progress: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "& > * + *": {
+      marginLeft: theme.spacing(2),
     },
   },
 }));

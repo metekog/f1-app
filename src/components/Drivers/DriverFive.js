@@ -17,20 +17,24 @@ import { Link } from "react-router-dom";
 
 export default function DriverFive() {
   const [drivers, setDrivers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchDriverData = async () => {
-      const data = await driverStanding();
-      setDrivers(data);
-    };
-    fetchDriverData();
+    setTimeout(() => {
+      const fetchDriverData = async () => {
+        const data = await driverStanding();
+        setDrivers(data);
+        setLoading(true);
+      };
+      fetchDriverData();
+    }, 900);
   }, []);
 
   const classes = useStyles();
 
   return (
     <div>
-      {drivers ? (
+      {loading ? (
         <TableContainer>
           <Typography className={classes.header} variant="h5">
             Drivers Standings

@@ -3,7 +3,7 @@ import "./app.scss";
 import Topbar from "./components/Topbar/Topbar";
 import Menu from "./components/Menu/Menu";
 import AllDrivers from "./components/Drivers/AllDrivers";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import ConstructorStandings from "./components/Constructor/ConstructorStandings";
 import Layout from "./components/Layout/Layout";
 import DriverStandings from "./components/Drivers/DriverStandings";

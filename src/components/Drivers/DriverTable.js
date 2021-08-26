@@ -21,7 +21,6 @@ export default function DriverTable({ years }) {
       const data = await fetchDrivers(years);
       setDrivers(data);
     };
-
     fetchDriversData();
   }, [years]);
 

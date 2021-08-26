@@ -24,11 +24,13 @@ const DriverStandings = () => {
   const [years, setYears] = useState("2021");
 
   useEffect(() => {
-    const fetchDriversData = async () => {
-      const data = await driverStanding(years);
-      setDrivers(data);
-    };
-    fetchDriversData();
+    setTimeout(() => {
+      const fetchDriversData = async () => {
+        const data = await driverStanding(years);
+        setDrivers(data);
+      };
+      fetchDriversData();
+    }, 3000);
   }, [years]);
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const DriverStandings = () => {
         gutterBottom
       >
         <b className={classes.raceName}>
-          <span style={{color:"#DB0A40"}}>{years} </span>- Drivers' Standings{" "}
+          <span style={{ color: "#DB0A40" }}>{years} </span>- Drivers' Standings{" "}
         </b>
       </Typography>
       <FormControl>

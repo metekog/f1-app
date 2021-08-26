@@ -17,20 +17,24 @@ import { Link } from "react-router-dom";
 
 export default function ConstructorFive() {
   const [constructors, setConstructors] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchConstructorData = async () => {
-      const data = await constructorStanding();
-      setConstructors(data);
-    };
-    fetchConstructorData();
+    setTimeout(() => {
+      const fetchConstructorData = async () => {
+        const data = await constructorStanding();
+        setConstructors(data);
+        setLoading(true);
+      };
+      fetchConstructorData();
+    }, 900);
   }, []);
 
   const classes = useStyles();
 
   return (
     <div>
-      {constructors ? (
+      {loading ? (
         <TableContainer>
           <Typography className={classes.header} variant="h5">
             Constructors Standings
